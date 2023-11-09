@@ -1,8 +1,9 @@
 <body>
   <script type="module">
-    const rootDiv = document.createElement('div')
-    rootDiv.id = 'root'
-    document.body.append(rootDiv)
+    const rootElement = document.createElement('div')
+    rootElement.setAttribute('id', 'root')
+    document.body.append(rootElement)
+
     const helloWorldDiv = document.createElement('div')
     helloWorldDiv.textContent = 'Hello World'
     helloWorldDiv.className = 'container'
