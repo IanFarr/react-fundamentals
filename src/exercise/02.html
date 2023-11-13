@@ -6,11 +6,10 @@
 
   <script type="module">
     const rootElement = document.getElementById('root')
-
-    const elementProps = {className: 'container', children: 'Hello World'}
-    const elementType = 'div'
-    const reactElement = React.createElement(elementType, elementProps)
-    const root = ReactDOM.createRoot(rootElement)
-    root.render(reactElement)
+    const reactElement = React.createElement('div', {
+      className: 'container',
+      children: 'Hello World',
+    })
+    const root = ReactDOM.render(reactElement, rootElement)
   </script>
 </body>
