@@ -1,31 +1,28 @@
 import * as React from 'react'
 
 function UsernameForm({onSubmitUsername}) {
-  const usernameInputRef = React.useRef()
-  const [error, setError] = React.useState(null)
+  const [username, setUsername] = React.useState('')
 
   const handleChange = event => {
     const input = event.target.value
-    const isValid = input === input.toLowerCase()
-    setError(isValid ? null : 'Username must be lower case')
+    setUsername(input.toLowerCase())
   }
 
   const handleSubmit = event => {
     event.preventDefault()
-    onSubmitUsername(usernameInputRef.current.value)
+    onSubmitUsername(username)
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="input">Username:</label>
+        <label htmlFor="usernameInput">Username:</label>
         <input
           id="usernameInput"
           type="text"
-          ref={usernameInputRef}
           onChange={handleChange}
+          value={username}
         />
-        {error ? <p>{error}</p> : null}
       </div>
       <button type="submit">Submit</button>
     </form>
@@ -34,7 +31,11 @@ function UsernameForm({onSubmitUsername}) {
 
 function App() {
   const onSubmitUsername = username => alert(`You entered: ${username}`)
-  return <UsernameForm onSubmitUsername={onSubmitUsername} />
+  return (
+    <div style={{minWidth: 400}}>
+      <UsernameForm onSubmitUsername={onSubmitUsername} />
+    </div>
+  )
 }
 
 export default App
